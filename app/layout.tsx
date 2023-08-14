@@ -1,3 +1,4 @@
+'use client'
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <NavBar />
-        <Modal />
+        <Modal  />
         {children}
       </body>
     </html>
