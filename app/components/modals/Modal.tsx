@@ -52,7 +52,6 @@ const Modal: React.FC<ModalProps> = ({
     onSubmit();
   }, [disabled, onSubmit]);
 
-
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
       return;
@@ -61,8 +60,8 @@ const Modal: React.FC<ModalProps> = ({
     secondaryAction();
   }, [disabled, secondaryAction]);
 
-  if(!isOpen) {
-    return null
+  if (!isOpen) {
+    return null;
   }
 
   return (
@@ -114,7 +113,7 @@ const Modal: React.FC<ModalProps> = ({
                   )}
 
                   <Button
-                    label="My Button"
+                    label={actionLabel}
                     disabled={disabled}
                     onClick={handleSubmit}
                   />
