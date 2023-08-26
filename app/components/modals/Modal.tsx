@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 interface ModalProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
@@ -52,6 +52,7 @@ const Modal: React.FC<ModalProps> = ({
     onSubmit();
   }, [disabled, onSubmit]);
 
+
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
       return;
@@ -59,6 +60,10 @@ const Modal: React.FC<ModalProps> = ({
 
     secondaryAction();
   }, [disabled, secondaryAction]);
+
+  if(!isOpen) {
+    return null
+  }
 
   return (
     <>
