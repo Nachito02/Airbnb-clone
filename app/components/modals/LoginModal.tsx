@@ -12,9 +12,11 @@ import Button from "../Button";
 import { AiFillGithub } from "react-icons/ai";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
-
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 const LoginModal = () => {
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
+
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -51,6 +53,11 @@ const LoginModal = () => {
       }
     });
   };
+
+  const toogle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -100,12 +107,12 @@ const LoginModal = () => {
 
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row items-center gap-2 justify-center">
-          <div>Already have an account?</div>
+          <div>Fist time using Airbnb?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={loginModal.onClose}
+            onClick={toogle}
           >
-            Log in
+            Create an account
           </div>
         </div>
       </div>
